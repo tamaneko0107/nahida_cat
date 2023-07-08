@@ -21,17 +21,17 @@
     for (let strong of strongs) {
       strong.innerHTML = "_" + strong.innerHTML + "_";
       // 如果<strong>元素內部包含<span>標籤且<span>標籤帶有顏色，則在其內容前後各加一個'$'字符，並在後面標註顏色編碼
-      let spans = strong.querySelectorAll("span");
-      for (let span of spans) {
-        if (span.style.color) {
-          span.innerHTML =
-            "$(" +
-            span.style.color +
-            ")" +
-            span.innerHTML +
-            "$";
-        }
-      }
+      // let spans = strong.querySelectorAll("span");
+      // for (let span of spans) {
+      //   if (span.style.color) {
+      //     span.innerHTML =
+      //       "$(" +
+      //       span.style.color +
+      //       ")" +
+      //       span.innerHTML +
+      //       "$";
+      //   }
+      // }
     }
     // 如果<p>元素包含<img>標籤，則將其內容改為圖像的網址(src)
     if (p.querySelector("img")) {

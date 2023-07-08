@@ -23,8 +23,8 @@ async def fetch():
     catalogue_box = browser.find_element(By.CLASS_NAME, "catalogueBox")
     li_element = catalogue_box.find_elements(By.TAG_NAME, "li")
 
-    category = li_element[0].text.split('\n')[0]
-    li_element[0].click()
+    category = li_element[6].text.split('\n')[0]
+    li_element[6].click()
 
     if category == 'お知らせ':
         category = 'news'
@@ -35,16 +35,21 @@ async def fetch():
 
     browser.switch_to.window(browser.window_handles[-1])
 
+    if os.path.exists('./blue_archive/color_fetch.js'):
+        with open('./blue_archive/color_fetch.js', 'r', encoding="utf-8") as f:
+            js_color = f.read()
+
     if os.path.exists('./blue_archive/fetch.js'):
         with open('./blue_archive/fetch.js', 'r', encoding="utf-8") as f:
             js = f.read()
 
+    colors = browser.execute_script(js_color)
     content = browser.execute_script(js)
 
     with open(f'./blue_archive/{category}.txt', 'w', encoding="utf-8") as f:
         for txt in content:
             f.write(txt.text+'\n')
     
-    return *(split.read(category)), browser.current_url
+    return *(split.read(category)), browser.current_url, colors
 
     

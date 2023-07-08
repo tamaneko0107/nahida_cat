@@ -2,7 +2,7 @@ import discord
 import blue_archive.fetch as fetch
 
 async def Embed():
-    content, color_list, strong_list, url = await fetch.fetch()
+    content, strong_list, url, colors = await fetch.fetch()
     content = '\n'.join(content)
     content = content.strip(' \n')
 
@@ -17,8 +17,11 @@ async def Embed():
         else:
             break
     
+    end = 0
     for strong_text in strong_list:
-        content = content.replace(strong_text, f'**{strong_text}**')
+        content = content[:end] + content[end:].replace(strong_text, f'**{strong_text}**', 1)
+        end = end + content[end:].find(f'**{strong_text}**') + len(strong_text) + 4
+    content = content.replace('****', '')
 
     content_list = content.split('\n')
 
@@ -30,12 +33,13 @@ async def Embed():
 
     content = '\n'.join(content_list[2:])
 
-    if len(color_list) >= 2:
-        color_list = color_list[1::2]
-        rgb = color_list[0]
-        color_list = [i for i in color_list if i != 'rgb(255, 0, 0)']
-        if color_list:
-            rgb = color_list[0]
+    colors = [i for i in colors if i != 'rgb(0, 0, 0)']
+    if colors:
+        # color_list = color_list[1::2]
+        rgb = colors[0]
+        colors = [i for i in colors if i != 'rgb(255, 0, 0)']
+        if colors:
+            rgb = colors[0]
 
         # 移除 "rgb(" 和 ")"，並將剩餘部分拆分為三個部分
         r, g, b = map(int, rgb[4:-1].split(","))
