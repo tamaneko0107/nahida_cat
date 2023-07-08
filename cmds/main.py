@@ -7,5 +7,5 @@ class Main(Cog_Extension):
     async def ping(self, ctx):
         await ctx.send(f'{self.bot.latency*1000:.0f} ms')
 
-def setup(bot):
-    return bot.add_cog(Main(bot))
+async def setup(bot):
+    await bot.add_cog(Main(bot))

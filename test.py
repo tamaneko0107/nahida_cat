@@ -1,2 +1,1 @@
-async def setup(bot):
-    await bot.add_cog(Main(bot))
+from discord_slash import SlashCommand

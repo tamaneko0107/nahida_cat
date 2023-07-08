@@ -23,8 +23,8 @@ async def fetch():
     catalogue_box = browser.find_element(By.CLASS_NAME, "catalogueBox")
     li_element = catalogue_box.find_elements(By.TAG_NAME, "li")
 
-    category = li_element[6].text.split('\n')[0]
-    li_element[6].click()
+    category = li_element[0].text.split('\n')[0]
+    li_element[0].click()
 
     if category == 'お知らせ':
         category = 'news'
