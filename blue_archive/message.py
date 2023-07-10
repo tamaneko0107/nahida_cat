@@ -1,8 +1,8 @@
 import discord
 import blue_archive.fetch as fetch
 
-async def Embed():
-    content, strong_list, url, colors = await fetch.fetch()
+def Embed():
+    content, strong_list, url, colors = fetch.fetch()
     content = '\n'.join(content)
     content = content.strip(' \n')
 

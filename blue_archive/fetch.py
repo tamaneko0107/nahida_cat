@@ -16,12 +16,13 @@ url = "https://bluearchive.jp/news/newsJump"
 # Wait for the page to load completely
 browser.implicitly_wait(10)
 
-async def fetch():
+def fetch():
 
     browser.get(url)
 
     catalogue_box = browser.find_element(By.CLASS_NAME, "catalogueBox")
     li_element = catalogue_box.find_elements(By.TAG_NAME, "li")
+
 
     category = li_element[0].text.split('\n')[0]
     li_element[0].click()
