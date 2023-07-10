@@ -47,7 +47,10 @@ def fetch():
     colors = browser.execute_script(js_color)
     content = browser.execute_script(js)
 
-    with open(f'./blue_archive/{category}.txt', 'w', encoding="utf-8") as f:
+    if not os.path.exists('tmp'):
+        os.makedirs('tmp')
+
+    with open(f'./tmp/{category}.txt', 'w', encoding="utf-8") as f:
         for txt in content:
             f.write(txt.text+'\n')
     

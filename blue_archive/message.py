@@ -56,7 +56,7 @@ def Embed():
     embed.set_footer(text=footer, 
                      icon_url="https://pbs.twimg.com/profile_images/1509908445054443527/ObBk7aEE_400x400.png")
     
-    return embed
+    return embed, url
 
     
     

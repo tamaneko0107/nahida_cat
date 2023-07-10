@@ -1,6 +1,6 @@
 
 def read(category):
-    with open(f"./blue_archive/{category}.txt", 'r', encoding="utf-8") as f:
+    with open(f"./tmp/{category}.txt", 'r', encoding="utf-8") as f:
         t = f.read()
 
     t = t.split('\n ')
